@@ -14,10 +14,10 @@ use PDOException;
 
 class DBConnect
 {
-    private $host = "localhost";
-    private $db_name = "fs_db";
-    private $username = "root";
-    private $password = "root";
+    private $host = "kcpgm0ka8vudfq76.chr7pe7iynqr.eu-west-1.rds.amazonaws.com";//"localhost";
+    private $db_name = "gywi124dzdj30f9p";//"fs_db";
+    private $username = "ykid7cbr7mn38cbn";//"root";
+    private $password = "y03rfmjfqheu6rmo";//"root";
     public $conn;
 
 
