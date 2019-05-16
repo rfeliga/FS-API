@@ -13,6 +13,7 @@ header("Access-Control-Allow-Credentials: true");
 header('Content-Type: application/json');
 
 require_once '../../../vendor/autoload.php';
+include '../../authentication.php';
 
 use App\DBConnect;
 use App\Address;

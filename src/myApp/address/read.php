@@ -13,6 +13,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 require_once '../../../vendor/autoload.php';
+include '../../authentication.php';
 
 use App\DBConnect;
 use App\Address;

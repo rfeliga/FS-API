@@ -6,7 +6,7 @@
  * Time: 12:00
  */
 
-require_once '../../../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use App\DBConnect;
 
@@ -14,6 +14,7 @@ $username = null;
 $password = null;
 
 $dbConn = new DBConnect();
+$dbConn->get_Connection();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -21,15 +22,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        $query = $dbConn->conn->prepare("SELECT `id` FROM `users` WHERE `username` = ? and `password` = PASSWORD(?)");
-        $query->bind_param("ss", $username, $password);
+        $query = $dbConn->conn->prepare("SELECT u.id FROM users as u WHERE username = ? and password = PASSWORD(?)");
+        $query->bindParam(1, $username);
+        $query->bindParam(2, $password);
         $query->execute();
-        $query->bind_result($id);
-        $query->fetch();
-        $query->close();
 
-        if(!empty($id)) {
-            header('Location: index.php');
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        echo "ID";
+        echo $row;
+
+        if(!empty($row['id'])) {
+            session_start();
+            $_SESSION["authenticated"] = 'true';
+            header('Location: ../index.php');
         }
         else {
             header('Location: login.php');
