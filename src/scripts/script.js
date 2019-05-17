@@ -3,7 +3,7 @@ $(document).ready(function() {
     let search_term = get('search');
     if (guid) {
         $.ajax({
-            url: "/../src/myapp/address/read_single.php?guid=" + guid,
+            url: "../src/myapp/address/read_single.php?guid=" + guid,
             dataType: 'json',
             jsonpCallback: 'drawTable',
             success: function (data) {
@@ -12,7 +12,7 @@ $(document).ready(function() {
         });
     } else if (search_term) {
         $.ajax({
-            url: "/../src/myapp/address/search.php?search=" + search_term,
+            url: "../src/myapp/address/search.php?search=" + search_term,
             dataType: 'json',
             jsonpCallback: 'drawTable',
             success: function (data) {
@@ -21,7 +21,7 @@ $(document).ready(function() {
         });
     } else {
         $.ajax({
-            url: "/../src/myapp/address/read.php",
+            url: "../src/myapp/address/read.php",
             dataType: 'json',
             jsonpCallback: 'drawTable',
             success: function (data) {
